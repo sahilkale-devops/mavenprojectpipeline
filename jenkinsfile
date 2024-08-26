@@ -1,8 +1,11 @@
 pipeline
 {
-agen any
 
-stage("scm checkout")
+
+agent any
+stages
+{
+    stage("scm checkout")
     {
         steps
         {
@@ -19,4 +22,9 @@ stage("compile code")
         
         }
     }
+}
+
+
+
+
 }
