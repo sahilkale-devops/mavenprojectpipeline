@@ -1,12 +1,11 @@
 pipeline
 {
-agen any
-
+agent any
+stages
+{
 stage("scm checkout")
     {
-        steps
-        {
-            git branch: 'master', url: 'https://github.com/sahilkale-devops/mavenprojectpipeline.git'
-        }
+        steps{ git branch: 'master', url: 'https://github.com/sahilkale-devops/mavenprojectpipeline.git' }
     }
+}
 }
