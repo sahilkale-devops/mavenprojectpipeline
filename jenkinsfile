@@ -9,4 +9,14 @@ stage("scm checkout")
             git branch: 'master', url: 'https://github.com/sahilkale-devops/mavenprojectpipeline.git'
         }
     }
+
+stage("compile code")
+    {
+        steps 
+        { 
+            withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
+         {sh ' mvn compile'}
+        
+        }
+    }
 }
