@@ -22,9 +22,33 @@ stage("compile code")
         
         }
     }
+
+stage("Unit test cases execution")
+    {
+        steps 
+        { 
+            withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
+         {sh ' mvn test'}
+        
+        }
+    }
+stage("Deploy to tomcat server")
+    {
+        steps 
+        {
+            sshagent(['Deploy-to-tomcat'])
+             {
+                sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.95.6 : /usr/share/tomcat/webapps/'
+             }
+        }
+        
+        
+    }
+
+
+
+
 }
-
-
 
 
 }
