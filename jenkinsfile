@@ -1,64 +1,57 @@
 pipeline
 {
-
-
-agent any
-stages
-{
-    stage("scm checkout")
+    agent any
+    stages
     {
-        steps
+        stage("scm checkout")
         {
-            git branch: 'master', url: 'https://github.com/sahilkale-devops/mavenprojectpipeline.git'
+            steps
+            {
+                git branch: 'master', url: 'https://github.com/sahilkale-devops/mavenprojectpipeline.git'
+            }
         }
-    }
 
-stage("compile code")
-    {
-        steps 
-        { 
-            withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
-         {sh ' mvn compile'}
-        
-        }
-    }
-
-stage("Unit test cases execution")
-    {
-        steps 
-        { 
-            withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
-         {sh ' mvn test'}
-        
-        }
-    }
-stage("Creating Artifacts")
-    {
-        steps 
-        { 
-            withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
-         {sh ' mvn package'}
-        
-        }
-    }
-
-stage("Deploy to tomcat server")
-    {
-        steps 
+        stage("compile the code")
         {
-            sshagent(['Deploy-to-tomcat'])
-             {
-                sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.95.6 : /usr/s'
-             }
+            steps
+            {
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '', traceability: true) 
+                { sh 'mvn compile'} 
+       
+            }
+        }
+
+        stage("execute unit test framework")
+        {
+            steps
+            {
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '', traceability: true) 
+                { sh 'mvn test'} 
+       
+            }
+        }
+
+        stage("code build")
+        {
+            steps
+            {
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '', traceability: true) 
+                { sh 'mvn package'} 
+       
+            }
+        }
+
+        stage("deploy to tomcat server")
+        {
+            steps
+            {
+                sshagent(['Deploy-to-tomcat']) 
+                {
+                    sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.95.6 : /usr/share/tomcat/webapps/'
+                }
+       
+            }
         }
         
-        
     }
-
-
-
-
-}
-
-
 }
