@@ -32,14 +32,14 @@ stage("exucuting unit test framework")
         }
     }
 
-stage("building code/WAR File")
-{
-    steps
+stage("code build")
     {
-        withMaven(globalMavenSettingsConfig:'', jdk:'JDK_home', maven:'Maven_home', mavenSettingConfig:'', traceability: true)
-        {sh 'mvn package'}
+        steps 
+        { 
+            withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
+         {sh ' mvn package'}
+        
+        }
     }
-}
-}
 
 }
