@@ -22,9 +22,17 @@ stage("compile code")
         
         }
     }
+stage("exucuting unit test framework")
+    {
+        steps 
+        { 
+            withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
+         {sh ' mvn test'}
+        
+        }
+    }
+
+
 }
-
-
-
 
 }
