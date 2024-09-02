@@ -15,7 +15,7 @@ pipeline
         {
             steps
             {
-                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '', traceability: true) 
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'MAVEN_home', mavenSettingsConfig: '', traceability: true) 
                 { sh 'mvn compile'} 
        
             }
@@ -25,7 +25,7 @@ pipeline
         {
             steps
             {
-                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '', traceability: true) 
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'MAVEN_home', mavenSettingsConfig: '', traceability: true) 
                 { sh 'mvn test'} 
        
             }
@@ -35,7 +35,7 @@ pipeline
         {
             steps
             {
-                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_HOME', maven: 'MAVEN_HOME', mavenSettingsConfig: '', traceability: true) 
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'MAVEN_home', mavenSettingsConfig: '', traceability: true) 
                 { sh 'mvn package'} 
        
             }
