@@ -1,17 +1,19 @@
+HTML
 <!DOCTYPE html>
 <html>
 <head>
-    <title>My Homepage</title>
+    <title>Login Page</title>
 </head>
 <body>
-    <h1>Welcome to My Homepage!</h1>
-    <p>This is a simple example of an HTML webpage.</p>
-    <p>You can add more content here, such as:</p>
-    <ul>
-        <li>Text</li>
-        <li>Images</li>
-        <li>Links</li>
-        <li>Forms</li>
-    </ul>
+    <h1>Login</h1>
+    <form>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>   
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Login">
+    </form>   
+
 </body>
 </html>
