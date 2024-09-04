@@ -7,51 +7,26 @@ pipeline
         {
             steps
             {
-                git branch: 'master', url: 'https://github.com/sahilkale-devops/mavenprojectpipeline.git'
+                 git branch: 'master', url: 'https://github.com/sahilkale-devops/mavenprojectpipeline.git'
+
             }
         }
-
         stage("compile the code")
         {
             steps
             {
-                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true) 
-                { sh 'mvn compile'} 
-       
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
+                {sh 'mvn compile'}
             }
         }
 
-        stage("execute unit test framework")
+        stage("unit test framework")
         {
             steps
             {
-                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true) 
-                { sh 'mvn test'} 
-       
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
+                {sh 'mvn test'}
             }
         }
-
-        stage("code build")
-        {
-            steps
-            {
-                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true) 
-                { sh 'mvn package'} 
-       
-            }
-        }
-
-        stage("deploy to tomcat server")
-        {
-            steps
-            {
-                sshagent(['Deploy-to-tomcat']) 
-                {
-                    sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.24.124 : /usr/share/tomcat/webapps/'
-                }
-       
-            }
-        }
-        
     }
 }
