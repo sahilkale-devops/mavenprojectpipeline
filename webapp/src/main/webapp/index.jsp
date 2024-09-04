@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html>
-<h1>Hello I'm sahil kale </h1>
-<h4> Success fully deployed the application on server!!!</h4>
-<p>(0.987)</p>
-<a> href="first.jsp"><h3>Try Again</h3></a>
+<head>
+    <title>My Homepage</title>
+</head>
+<body>
+    <h1>Welcome to My Homepage!</h1>
+    <p>This is a simple example of an HTML webpage.</p>
+    <p>You can add more content here, such as:</p>
+    <ul>
+        <li>Text</li>
+        <li>Images</li>
+        <li>Links</li>
+        <li>Forms</li>
+    </ul>
+</body>
 </html>
