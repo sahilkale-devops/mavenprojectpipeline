@@ -28,5 +28,14 @@ pipeline
                 {sh 'mvn test'}
             }
         }
+        
+        stage("code build")
+        {
+            steps
+            {
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
+                {sh 'mvn package'}
+            }
+        }
     }
 }
