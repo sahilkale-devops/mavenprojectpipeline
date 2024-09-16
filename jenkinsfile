@@ -15,6 +15,7 @@ pipeline
         {
             steps
             {
+                input 'Do you really want to proceed?'
                 withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
                 {sh 'mvn compile'}
             }
