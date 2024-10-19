@@ -7,7 +7,7 @@ pipeline
         {
             steps
             {
-                 git branch: 'master', url: 'https://github.com/sahilkale-devops/mavenprojectpipeline.git'
+                git branch: 'master', url: 'https://github.com/sahilkale-devops/mavenprojectpipeline.git'
 
             }
         }
@@ -38,15 +38,6 @@ pipeline
             }
         }
          
-        stage("Deploy to tomcat")
-        {
-            steps
-            {
-                sshagent(['deploy-to-tomcat'])
-                {
-                    sh 'scp -o StrictHostKeyChecking=no webapp/target/webapp.war ec2-user@172.31.24.124:/usr/share/tomcat/webapps'
-                }
-            }
-        }
+        
     }
 }
