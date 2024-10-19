@@ -5,17 +5,20 @@ pipeline
     {
         stage("scm checkout")
         {
+            agent { label 'MAVEN' }
             steps
             {
-                git branch: 'master', url: 'https://github.com/sahilkale-devops/mavenprojectpipeline.git'
+                 git branch: 'master', url: 'https://github.com/sahilkale-devops/mavenprojectpipeline.git'
 
             }
         }
         stage("compile the code")
         {
+
+            agent { label 'MAVEN' }
             steps
             {
-                input 'Do you really want to proceed?'
+                
                 withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
                 {sh 'mvn compile'}
             }
@@ -23,6 +26,8 @@ pipeline
 
         stage("unit test framework")
         {
+
+            agent { label 'MAVEN' }
             steps
             {
                 withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
@@ -32,6 +37,8 @@ pipeline
         
         stage("code build")
         {
+
+            agent { label 'MAVEN' }
             steps
             {
                 withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'Maven_home', mavenSettingsConfig: '', traceability: true)
@@ -42,6 +49,3 @@ pipeline
         
     }
 }
-//#SK
-
-

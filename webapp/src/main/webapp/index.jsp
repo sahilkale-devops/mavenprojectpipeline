@@ -1,6 +1,9 @@
+HTML
 <!DOCTYPE html>
 <html>
-<h2>You'll have a wonderful day, thank you!</h2>
-<p>(0.987)</p>
-<a href="first.jsp"><h3>Try Again</h3></a>
+<head>
+    <title>Welcome to DevOps</title>
+</head>
+<h7> Sahil kale here!! </h7>
+<h5> Successfully Deployed the Webpage...!!!! </h5>
 </html>
