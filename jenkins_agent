@@ -19,8 +19,7 @@ pipeline
             steps
             {
                 
-                withMaven(globalMavenSettingsConfig: '', jdk: 'JAVA_SLAVE', maven: 'MAVEN_PATH', mavenSettingsConfig: '', traceability: true)
-                {sh 'mvn compile'}
+                sh 'mvn compile'
             }
         }
 
@@ -30,8 +29,7 @@ pipeline
             agent { label 'MAVEN' }
             steps
             {
-                withMaven(globalMavenSettingsConfig: '', jdk: 'JAVA_SLAVE', maven: 'MAVEN_PATH', mavenSettingsConfig: '', traceability: true)
-                {sh 'mvn test'}
+              sh 'mvn test'
             }
         }
         
@@ -41,8 +39,7 @@ pipeline
             agent { label 'MAVEN' }
             steps
             {
-                withMaven(globalMavenSettingsConfig: '', jdk: 'JAVA_SLAVE', maven: 'MAVEN_PATH', mavenSettingsConfig: '', traceability: true)
-                {sh 'mvn package'}
+                sh 'mvn package'
             }
         }
          
