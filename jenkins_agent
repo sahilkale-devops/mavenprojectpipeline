@@ -19,7 +19,7 @@ pipeline
             steps
             {
                 
-                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'JAVA_SLAVE', mavenSettingsConfig: '', traceability: true)
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JAVA_SLAVE', maven: 'MAVEN_PATH', mavenSettingsConfig: '', traceability: true)
                 {sh 'mvn compile'}
             }
         }
@@ -30,7 +30,7 @@ pipeline
             agent { label 'MAVEN' }
             steps
             {
-                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'JAVA_SLAVE', mavenSettingsConfig: '', traceability: true)
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JAVA_SLAVE', maven: 'MAVEN_PATH', mavenSettingsConfig: '', traceability: true)
                 {sh 'mvn test'}
             }
         }
@@ -41,7 +41,7 @@ pipeline
             agent { label 'MAVEN' }
             steps
             {
-                withMaven(globalMavenSettingsConfig: '', jdk: 'JDK_home', maven: 'JAVA_SLAVE', mavenSettingsConfig: '', traceability: true)
+                withMaven(globalMavenSettingsConfig: '', jdk: 'JAVA_SLAVE', maven: 'MAVEN_PATH', mavenSettingsConfig: '', traceability: true)
                 {sh 'mvn package'}
             }
         }
